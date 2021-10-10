@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <main class="container">
+        <div id="starting-page">
+            <h1 id="quiz-title">JavaScript Basic Quiz</h1>
+            <h2 id="quiz-brief"></h2>
+            <button id="start-btn" class="cta">Start</button>
+        </div>
+
+        <div id="question-page">
+            <h3 id="timer">Time: <span id="countdown"></span></h3>
+            <h2 id="question"></h2>
+            <ol>
+                <li><button id="answer1" class="cta"></button></li>
+                <li><button id="answer2" class="cta"></button></li>
+                <li><button id="answer3" class="cta"></button></li>
+                <li><button id="answer4" class="cta"></button></li>
+            </ol>
+            <h3 id="answerResult"></h3>
+        </div>
+
+        <div id="highscore-page">
+            <h2 id="HS-title">Highscores</h2>
+            <div id="HS-input">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Challenger" />
+                <button id="HS-submit" class="cta">Submit</button>
+            </div>
+            <div id="HS-list"></div>
+            <button id="back-btn" class="cta">Back to the Start</button>
+            <button id="clear-btn" class="cta">Clear Highscores</button>
+        </div>
+    </main>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
