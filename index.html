@@ -13,17 +13,17 @@
         <div id="starting-page">
             <h1 id="quiz-title">JavaScript Basic Quiz</h1>
             <h2 id="quiz-brief">You will have 75 seconds to answer 10 questions. Every time you answer incorrectly, your time will got deducted by 10 seconds. You will game over if your time drop to/under 0. Your score will be your remaining time. Good Luck.</h2>
-            <button id="start-btn" class="cta cta--single">Start</button>
+            <button id="start-btn">Start</button>
         </div>
 
         <div id="question-page">
-            <h3 id="timer">Remaining Time: <span id="countdown">75</span></h3>
+            <h3 id="timer">Remaining Time:<span id="countdown">75s</span></h3>
             <h2 id="question"></h2>
-            <ol>
-                <li><button id="answer1-btn" class="cta cta--choice"></button></li>
-                <li><button id="answer2-btn" class="cta cta--choice"></button></li>
-                <li><button id="answer3-btn" class="cta cta--choice"></button></li>
-                <li><button id="answer4-btn" class="cta cta--choice"></button></li>
+            <ol id="answer-list">
+                <li class="answer-item"><button id="answer1-btn"></button></li>
+                <li class="answer-item"><button id="answer2-btn"></button></li>
+                <li class="answer-item"><button id="answer3-btn"></button></li>
+                <li class="answer-item"><button id="answer4-btn"></button></li>
             </ol>
             <h3 id="answerResult"></h3>
         </div>
@@ -33,9 +33,9 @@
             <ol id="HS-list"></ol>
             <h3 id="score-Display">Your score is <span id="currentScore"></span> points!</h3>
             <div id="HS-input">
-                <label for="name">Name</label>
+                <label for="name">Name:</label>
                 <input type="text" name="name" id="name" placeholder="Challenger" />
-                <button id="HS-submit" class="cta cta--submit">Submit</button>
+                <button id="HS-submit">Submit</button>
             </div>
             <button id="back-btn" class="cta cta--pair">Back to the Start</button>
             <button id="clear-btn" class="cta cta--pair">Clear Highscores</button>

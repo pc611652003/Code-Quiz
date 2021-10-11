@@ -91,12 +91,9 @@ var startingQuiz = function(evt) {
 // Check if the correct answer is selected
 var checkingAnswer = function(buttonNum) {
     //evt.preventDefault();
-    console.log(buttonNum);
     if (Questions[questionNum].correct == buttonNum) {
-        console.log(buttonNum + " is the right answer!");
         correctStatement = "CORRECT !!!";
     } else {
-        console.log(buttonNum + " is not the right answer!");
         correctStatement = "WRONG !!!";
         timer = timer - 10;
     }
@@ -136,7 +133,7 @@ var updateQuestion = function() {
         answer2_btn.textContent = Questions[questionNum].answer2;
         answer3_btn.textContent = Questions[questionNum].answer3;
         answer4_btn.textContent = Questions[questionNum].answer4;
-        questionText.textContent = Questions[questionNum].question;
+        questionText.textContent = "Question " + (questionNum + 1) + " : " + Questions[questionNum].question;
         correctText.textContent = correctStatement;
     } else {
         stopTimer();
@@ -169,6 +166,7 @@ function endGame() {
     const currentScore = document.getElementById("currentScore");
     currentScore.innerText = timer;
 
+    clearHighscoreDisplay();
     loadHighscore();
 }
 
@@ -207,12 +205,14 @@ var returnStartingPage = function() {
     questionNum = -1;
     correctStatement = "";
     document.querySelector("input[name='name']").value = "";
+    clearHighscoreDisplay();
 }
 
 // Clear all highscore record
 var clearHighscore = function() {
     localStorage.setItem("highscoreList", "");
     localScoreList = [];
+    clearHighscoreDisplay();
 }
 
 // Update the Highscore List
@@ -254,7 +254,11 @@ var updateHighscoreList = function(newScore) {
             temparoryScore.push(newScore);
         }
         localStorage.setItem("highscoreList", JSON.stringify(temparoryScore));
-    }   
+    }
+
+    // Reload the Highscore display
+    clearHighscoreDisplay();
+    loadHighscore();   
 }
 
 // Load the stored highscore list
@@ -271,18 +275,25 @@ var loadHighscore = function () {
             var HSscore = document.createElement("h3");
 
             HSuser.textContent = savedScore[i].user;
-            console.log(savedScore[i].user);
             HSscore.textContent = savedScore[i].score;
-            console.log(savedScore[i].score);
             HSList.appendChild(HSli);
             HSli.appendChild(HSuser);
             HSli.appendChild(HSscore);
 
-            HSli.setAttribute("style", "display: flex; justify-content: space-between;");
-            HSuser.setAttribute("style", "text-align: start");
-            HSscore.setAttribute("style", "text-align: end");
+            if ((i % 2) == 0) {
+                HSli.setAttribute("style", "display: flex; justify-content: space-between; margin: 0vw; padding: 0vw; background-color: silver;");
+            } else {
+                HSli.setAttribute("style", "display: flex; justify-content: space-between; margin: 0vw; padding: 0vw; background-color: wheat;");
+            }
+            HSuser.setAttribute("style", "text-align: start; margin: 0vw; padding: 0vw;");
+            HSscore.setAttribute("style", "text-align: end; margin: 0vw; padding: 0vw;");
         }
     }
+}
+
+var clearHighscoreDisplay = function() {
+    var HSList = document.getElementById("HS-list");
+    HSList.innerText = "";
 }
 
 // Start the event listener to start everything

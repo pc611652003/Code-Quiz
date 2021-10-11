@@ -1,30 +1,37 @@
 * {
-    margin: 1vw;
-    padding: 2vw;
+    margin: 2vw;
+    padding: 1vw;
     box-sizing: border-box;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 5vw;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 3vw;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 2vw;
 }
 
-.cta {
+span {
+    margin: 0vw;
+    padding: 0vw;
+}
+
+button {
     border: none;
-    font-size: 1.5rem;
-    padding: 1rem 1.5rem;
+    font-size: 2vw;
+    margin: 0vw, 3vw;
+    padding: 1vw;
     cursor: pointer;
     transition: opacity 0.5s ease-in-out;
+    background-color:mediumseagreen;
 }
   
-.cta:hover {
+button:hover {
     opacity: 0.6;
 }
 
@@ -34,22 +41,70 @@ main {
     align-items: center;
     height: 100%;
     width: 100%;
+    margin: 2vw;
+    padding: 1vw;
 }
 
 #starting-page {
     display: block;
     background-color: cornflowerblue;
     text-align: center;
+    margin: 2vw;
+    padding: 1vw;
 }
 
+/* Style for Question Page */
 #question-page {
     display: none;
     background-color: cornflowerblue;
     text-align: start;
+    margin: 0vw;
 }
 
+#answer-List {
+    margin: 0.5vw 2vw;
+    padding: 0vw 2vw;
+}
+
+.answer-item {
+    margin: 0vw;
+    padding: 0vw;
+}
+/* End of the Style for Question Page */
+
+/* Style for Highscore Page */
 #highscore-page {
     display: none;
     background-color: cornflowerblue;
     text-align: center;
 }
+
+#HS-title {
+    background-color: tomato;
+    margin: 0vw;
+    padding: 3vw;
+}
+
+#score-Display, #currentScore {
+    background-color: gold;
+}
+
+#HS-submit {
+    background-color: crimson;
+}
+
+label {
+    margin: 0vw;
+    padding: 0vw;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+#name {
+    margin: 0vw;
+    padding: 1vw;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+/* End of the Style for Highscore Page */
