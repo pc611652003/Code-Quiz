@@ -35,9 +35,9 @@ main {
 }
 
 #question-page {
-    display: block;
+    display: none;
 }
 
 #highscore-page {
-    display: block;
+    display: none;
 }
