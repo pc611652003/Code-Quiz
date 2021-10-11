@@ -1,3 +1,9 @@
+* {
+    margin: 1vw;
+    padding: 2vw;
+    box-sizing: border-box;
+}
+
 h1 {
     font-size: 3rem;
 }
@@ -22,10 +28,6 @@ h3 {
     opacity: 0.6;
 }
 
-.cta--single {
-    justify-content: center;
-}
-
 main {
     display: flex;
     justify-content: center;
@@ -36,12 +38,18 @@ main {
 
 #starting-page {
     display: block;
+    background-color: cornflowerblue;
+    text-align: center;
 }
 
 #question-page {
     display: none;
+    background-color: cornflowerblue;
+    text-align: start;
 }
 
 #highscore-page {
     display: none;
+    background-color: cornflowerblue;
+    text-align: center;
 }

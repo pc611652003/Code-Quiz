@@ -168,6 +168,8 @@ function endGame() {
 
     const currentScore = document.getElementById("currentScore");
     currentScore.innerText = timer;
+
+    loadHighscore();
 }
 
 var highscoreButtonHandler = function(event) {
@@ -177,7 +179,7 @@ var highscoreButtonHandler = function(event) {
         submitUserInfo();
     } 
     if (targetEl.matches("#back-btn")) {
-        resetPage();
+        returnStartingPage();
     } 
     if (targetEl.matches("#clear-btn")) {
         clearHighscore();
@@ -198,7 +200,7 @@ var submitUserInfo = function() {
 }
 
 // Transfer back to original page, and also reset some general variables
-var resetPage = function() {
+var returnStartingPage = function() {
     highscorePage.style.display = "none";
     startingPage.style.display = "block";
     timer = 75;
@@ -252,11 +254,36 @@ var updateHighscoreList = function(newScore) {
             temparoryScore.push(newScore);
         }
         localStorage.setItem("highscoreList", JSON.stringify(temparoryScore));
-    }
-    
+    }   
 }
 
+// Load the stored highscore list
+var loadHighscore = function () {
+    var savedScore = localStorage.getItem("highscoreList");
+    var HSList = document.getElementById("HS-list");
 
+    if (savedScore) {
+        savedScore = JSON.parse(savedScore);
+        console.log(savedScore.length);
+        for (var i = 0; i < savedScore.length; i++) {
+            var HSli = document.createElement("li");
+            var HSuser = document.createElement("h3");
+            var HSscore = document.createElement("h3");
+
+            HSuser.textContent = savedScore[i].user;
+            console.log(savedScore[i].user);
+            HSscore.textContent = savedScore[i].score;
+            console.log(savedScore[i].score);
+            HSList.appendChild(HSli);
+            HSli.appendChild(HSuser);
+            HSli.appendChild(HSscore);
+
+            HSli.setAttribute("style", "display: flex; justify-content: space-between;");
+            HSuser.setAttribute("style", "text-align: start");
+            HSscore.setAttribute("style", "text-align: end");
+        }
+    }
+}
 
 // Start the event listener to start everything
 start_btn.addEventListener("click", startingQuiz);
