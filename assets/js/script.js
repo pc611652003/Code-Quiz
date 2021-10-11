@@ -76,7 +76,7 @@ var answer3_btn = document.querySelector("#answer3-btn");
 var answer4_btn = document.querySelector("#answer4-btn");
 var questionNum = 0;
 var correctStatement = "";
-var timer = document.querySelector("#countdown");
+var timer = 75;
 var questionText = document.querySelector("#question");
 var correctText = document.querySelector("#answerResult");
 var questionPage = document.querySelector("#question-page");
@@ -92,10 +92,9 @@ var startingQuiz = function(evt) {
     startingPage.style.display = "none";
     questionPage.style.display = "block";
 
-    //startTimer();
     start_btn.disabled = true;
     displayQuestion();
-
+    startTimer();
 }
 
 // Check if the correct answer is selected
@@ -106,6 +105,7 @@ var checkingAnswer = function(buttonNum) {
         console.log(buttonNum + " is the right answer!");
     } else {
         console.log(buttonNum + " is not the right answer!");
+        timer = timer - 10;
     }
 }
 
@@ -136,47 +136,37 @@ var displayQuestion = function() {
     questionText.textContent = Questions[questionNum].question;
     correctText.textContent = correctStatement;
 }
-/*
-answer1_btn.addEventListener("click", function(evt) {
-    evt.preventDefault();
 
-    if (Questions[questionNum].correct == 1) {
-        console.log("1 is the right answer!");
-    } else {
-        console.log("1 is not the right answer!");
-    }
-});
+function startTimer() {
+    const timeDisplay = document.getElementById("countdown");
+  
+    intervalID = setInterval(function () {
+      timer--;
+  
+      timeDisplay.innerText = timer + "s";
+  
+      if (timer <= 0) {
+        stopTimer();
+      }
+    }, 1000);
+}
+  
+function stopTimer() {
+    clearInterval(intervalID);
+    endGame();
+}
 
-answer2_btn.addEventListener("click", function(evt) {
-    evt.preventDefault();
+function endGame() {
+    const questionPage = document.getElementById("question-page");
+    const highscorePage = document.getElementById("highscore-page");
 
-    if (Questions[questionNum].correct == 2) {
-        console.log("2 is the right answer!");
-    } else {
-        console.log("2 is not the right answer!");
-    }
-});
+    questionPage.style.display = "none";
+    highscorePage.style.display = "block";
 
-answer3_btn.addEventListener("click", function(evt) {
-    evt.preventDefault();
+    const currentScore = document.getElementById("currentScore");
+    currentScore.innerText = timer;
+}
 
-    if (Questions[questionNum].correct == 3) {
-        console.log("3 is the right answer!");
-    } else {
-        console.log("3 is not the right answer!");
-    }
-});
-
-answer4_btn.addEventListener("click", function(evt) {
-    evt.preventDefault();
-
-    if (Questions[questionNum].correct == 4) {
-        console.log("4 is the right answer!");
-    } else {
-        console.log("4 is not the right answer!");
-    }
-});
-*/
-
+// Start the event listener to start everything
 start_btn.addEventListener("click", startingQuiz);
 questionPage.addEventListener("click", questionButtonHandler);
