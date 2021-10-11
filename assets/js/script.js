@@ -70,30 +70,21 @@ const Questions = [{ // Question 01
     correct: 1
 }];
 const start_btn = document.querySelector("#start-btn");
-var answer1_btn = document.querySelector("#answer1-btn");
-var answer2_btn = document.querySelector("#answer2-btn");
-var answer3_btn = document.querySelector("#answer3-btn");
-var answer4_btn = document.querySelector("#answer4-btn");
-var questionNum = 0;
+var questionNum = -1;
 var correctStatement = "";
 var timer = 75;
-var questionText = document.querySelector("#question");
-var correctText = document.querySelector("#answerResult");
-var questionPage = document.querySelector("#question-page");
+const startingPage = document.getElementById("starting-page");
+const questionPage = document.getElementById("question-page");
+const highscorePage = document.getElementById("highscore-page");
 
 // React to user starting the quiz by pressing start button
 var startingQuiz = function(evt) {
     evt.preventDefault();
-    console.log("pressed");
-
-    const startingPage = document.getElementById("starting-page");
-    const questionPage = document.getElementById("question-page");
 
     startingPage.style.display = "none";
     questionPage.style.display = "block";
 
-    start_btn.disabled = true;
-    displayQuestion();
+    updateQuestion();
     startTimer();
 }
 
@@ -103,10 +94,13 @@ var checkingAnswer = function(buttonNum) {
     console.log(buttonNum);
     if (Questions[questionNum].correct == buttonNum) {
         console.log(buttonNum + " is the right answer!");
+        correctStatement = "CORRECT !!!";
     } else {
         console.log(buttonNum + " is not the right answer!");
+        correctStatement = "WRONG !!!";
         timer = timer - 10;
     }
+    updateQuestion();
 }
 
 // Check which answer is chosen
@@ -128,13 +122,25 @@ var questionButtonHandler = function(event) {
 };
 
 // Update the display of the question page
-var displayQuestion = function() {
-    answer1_btn.textContent = Questions[questionNum].answer1;
-    answer2_btn.textContent = Questions[questionNum].answer2;
-    answer3_btn.textContent = Questions[questionNum].answer3;
-    answer4_btn.textContent = Questions[questionNum].answer4;
-    questionText.textContent = Questions[questionNum].question;
-    correctText.textContent = correctStatement;
+var updateQuestion = function() {
+    var answer1_btn = document.querySelector("#answer1-btn");
+    var answer2_btn = document.querySelector("#answer2-btn");
+    var answer3_btn = document.querySelector("#answer3-btn");
+    var answer4_btn = document.querySelector("#answer4-btn");
+    var questionText = document.querySelector("#question");
+    var correctText = document.querySelector("#answerResult");
+
+    questionNum++;
+    if (questionNum < 10) {
+        answer1_btn.textContent = Questions[questionNum].answer1;
+        answer2_btn.textContent = Questions[questionNum].answer2;
+        answer3_btn.textContent = Questions[questionNum].answer3;
+        answer4_btn.textContent = Questions[questionNum].answer4;
+        questionText.textContent = Questions[questionNum].question;
+        correctText.textContent = correctStatement;
+    } else {
+        stopTimer();
+    }
 }
 
 function startTimer() {
@@ -157,9 +163,6 @@ function stopTimer() {
 }
 
 function endGame() {
-    const questionPage = document.getElementById("question-page");
-    const highscorePage = document.getElementById("highscore-page");
-
     questionPage.style.display = "none";
     highscorePage.style.display = "block";
 
@@ -167,6 +170,40 @@ function endGame() {
     currentScore.innerText = timer;
 }
 
+var highscoreButtonHandler = function(event) {
+    var targetEl = event.target;
+  
+    if (targetEl.matches("#HS-submit")) {
+        submitUserInfo();
+    } 
+    if (targetEl.matches("#back-btn")) {
+        resetPage();
+    } 
+    if (targetEl.matches("#clear-btn")) {
+        clearHighscore();
+    } 
+};
+
+var submitUserInfo = function() {
+    var username = document.getElementById("name");
+    console.log(username);
+}
+
+var resetPage = function() {
+    highscorePage.style.display = "none";
+    startingPage.style.display = "block";
+    timer = 75;
+    questionNum = -1;
+    correctStatement = "";
+}
+
+var clearHighscore = function() {
+    console.log("clear all score");
+}
+
+
+
 // Start the event listener to start everything
 start_btn.addEventListener("click", startingQuiz);
 questionPage.addEventListener("click", questionButtonHandler);
+highscorePage.addEventListener("click", highscoreButtonHandler);
