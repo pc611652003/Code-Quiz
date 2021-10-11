@@ -100,7 +100,7 @@ var checkingAnswer = function(buttonNum) {
     updateQuestion();
 }
 
-// Check which answer is chosen
+// Call different answer checking according to which answer is chosen
 var questionButtonHandler = function(event) {
     var targetEl = event.target;
   
@@ -128,6 +128,7 @@ var updateQuestion = function() {
     var correctText = document.querySelector("#answerResult");
 
     questionNum++;
+    // Update the question display unless all 10 questions are asked
     if (questionNum < 10) {
         answer1_btn.textContent = Questions[questionNum].answer1;
         answer2_btn.textContent = Questions[questionNum].answer2;
@@ -136,10 +137,12 @@ var updateQuestion = function() {
         questionText.textContent = "Question " + (questionNum + 1) + " : " + Questions[questionNum].question;
         correctText.textContent = correctStatement;
     } else {
+        // End the quiz due to all questions are answered
         stopTimer();
     }
 }
 
+// Start the timer and constantly update the remaining time display
 function startTimer() {
     const timeDisplay = document.getElementById("countdown");
   
@@ -148,17 +151,20 @@ function startTimer() {
   
       timeDisplay.innerText = timer + "s";
   
+      // End the quiz due to time out
       if (timer <= 0) {
         stopTimer();
       }
     }, 1000);
 }
-  
+
+// Stop the timer and End the Quiz
 function stopTimer() {
     clearInterval(intervalID);
     endGame();
 }
 
+// Load Highscore page due to the end of the quiz
 function endGame() {
     questionPage.style.display = "none";
     highscorePage.style.display = "block";
@@ -170,6 +176,7 @@ function endGame() {
     loadHighscore();
 }
 
+// Carry out different function according to different buttons pressed in Highscore page
 var highscoreButtonHandler = function(event) {
     var targetEl = event.target;
   
@@ -209,10 +216,9 @@ var returnStartingPage = function() {
     clearHighscoreDisplay();
 }
 
-// Clear all highscore record
+// Clear all highscore record and display
 var clearHighscore = function() {
     localStorage.setItem("highscoreList", "");
-    localScoreList = [];
     clearHighscoreDisplay();
 }
 

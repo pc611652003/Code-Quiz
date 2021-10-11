@@ -10,12 +10,15 @@
 
 <body>
     <main class="container">
+
+        <!-- The Starting Page -->
         <div id="starting-page">
             <h1 id="quiz-title">JavaScript Basic Quiz</h1>
             <h2 id="quiz-brief">You will have 75 seconds to answer 10 questions. Every time you answer incorrectly, your time will got deducted by 10 seconds. You will game over if your time drop to/under 0. Your score will be your remaining time. Good Luck.</h2>
             <button id="start-btn">Start</button>
         </div>
 
+        <!-- The Question Page -->
         <div id="question-page">
             <h3 id="timer">Remaining Time:<span id="countdown">75s</span></h3>
             <h2 id="question"></h2>
@@ -28,6 +31,7 @@
             <h3 id="answerResult"></h3>
         </div>
 
+        <!-- The Highscore Page -->
         <div id="highscore-page">
             <h2 id="HS-title">Highscores</h2>
             <ol id="HS-list"></ol>
@@ -40,6 +44,7 @@
             <button id="back-btn" class="cta cta--pair">Back to the Start</button>
             <button id="clear-btn" class="cta cta--pair">Clear Highscores</button>
         </div>
+        
     </main>
 
     <script src="./assets/js/script.js"></script>

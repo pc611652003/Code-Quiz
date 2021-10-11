@@ -46,6 +46,7 @@ main {
     padding: 1vw;
 }
 
+/* Style for Starting Page */
 #starting-page {
     display: block;
     background-color: cornflowerblue;
@@ -53,6 +54,7 @@ main {
     margin: 2vw;
     padding: 1vw;
 }
+/* End of the Style for Starting Page */
 
 /* Style for Question Page */
 #question-page {
@@ -107,5 +109,4 @@ label {
     font-weight: bold;
     font-size: 2vw;
 }
-
 /* End of the Style for Highscore Page */
