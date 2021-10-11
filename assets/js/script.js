@@ -184,21 +184,76 @@ var highscoreButtonHandler = function(event) {
     } 
 };
 
+// Submit the non-empty name and the corresponding point to Highscore List
 var submitUserInfo = function() {
-    var username = document.getElementById("name");
-    console.log(username);
+    var username = document.querySelector("input[name='name']").value;
+    if (username) {
+        var newScore = {
+            user: username,
+            score: timer
+        };
+        console.log(username);
+        updateHighscoreList(newScore);
+    }
 }
 
+// Transfer back to original page, and also reset some general variables
 var resetPage = function() {
     highscorePage.style.display = "none";
     startingPage.style.display = "block";
     timer = 75;
     questionNum = -1;
     correctStatement = "";
+    document.querySelector("input[name='name']").value = "";
 }
 
+// Clear all highscore record
 var clearHighscore = function() {
-    console.log("clear all score");
+    localStorage.setItem("highscoreList", "");
+    localScoreList = [];
+}
+
+// Update the Highscore List
+var updateHighscoreList = function(newScore) {
+    var savedScore = localStorage.getItem("highscoreList");
+    var scoreAdded = false;
+    var temparoryScore = [];
+  
+    // if no existing High score
+    //  -> just add the new score
+    if (!savedScore) {
+        temparoryScore.push(newScore);
+        localStorage.setItem("highscoreList", JSON.stringify(temparoryScore));
+    } else {
+        // if High score existed
+        //  -> Run through the list and add the score on top of same or lower scores
+        savedScore = JSON.parse(savedScore);
+        for (var i = 0; i < savedScore.length; i++) {
+            if (!scoreAdded) {
+                if (savedScore[i].score > newScore.score) {
+                    // Add score that is higher than current score
+                    temparoryScore.push(savedScore[i]);
+                } else {
+                    // Add the current score when find the same/lower score
+                    // Also change flag to true to indicate no check needed anymore
+                    temparoryScore.push(newScore);
+                    temparoryScore.push(savedScore[i]);
+                    scoreAdded = true;
+                }
+            }
+            else {
+                // Add the rest of the highscore list
+                temparoryScore.push(savedScore[i]);
+            }
+        }
+        // If the current score is the lowest
+        //  -> add it at the end.
+        if (!scoreAdded) {
+            temparoryScore.push(newScore);
+        }
+        localStorage.setItem("highscoreList", JSON.stringify(temparoryScore));
+    }
+    
 }
 
 
