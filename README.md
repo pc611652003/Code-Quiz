@@ -40,3 +40,9 @@ You are required to submit the following for review:
 
 ---
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
+### Result
+
+URL of the deployed application : https://pc611652003.github.io/Code-Quiz/
+
+URL of the GitHub repository : https://github.com/pc611652003/Code-Quiz
