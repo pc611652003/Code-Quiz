@@ -64,14 +64,31 @@ main {
     margin: 0vw;
 }
 
+#timer {
+    margin: 0;
+    padding: 0;
+}
+    
+#countdown {
+    margin: 0;
+    padding: 0;
+}
+
+.answer-btn {
+    margin: 0.5vw 0vw;
+    padding: 0;
+}
+
 #answer-List {
-    margin: 0.5vw 2vw;
+    margin: 0.5vw 4vw;
     padding: 0vw 2vw;
 }
 
 .answer-item {
     margin: 0vw;
     padding: 0vw;
+    font-size: 2vw;
+    font-weight: bold;
 }
 /* End of the Style for Question Page */
 
