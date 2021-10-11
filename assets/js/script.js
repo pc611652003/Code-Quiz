@@ -1,4 +1,4 @@
-var Questions = [{ // Question 01
+const Questions = [{ // Question 01
     question: "Which of the following location is the best to put <script> element in the HTML file?",
     answer1: "At the start of the <head> element",
     answer2: "At the start of the <body> element",
@@ -70,10 +70,21 @@ var Questions = [{ // Question 01
     correct: 1
 }];
 const start_btn = document.querySelector("#start-btn");
-var answer1 = document.querySelector("answer1");
+var answer1_btn = document.querySelector("#answer1-btn");
+var answer2_btn = document.querySelector("#answer2-btn");
+var answer3_btn = document.querySelector("#answer3-btn");
+var answer4_btn = document.querySelector("#answer4-btn");
+var questionNum = 0;
+var correctStatement = "";
+var timer = document.querySelector("#countdown");
+var questionText = document.querySelector("#question");
+var correctText = document.querySelector("#answerResult");
+var questionPage = document.querySelector("#question-page");
 
-start_btn.addEventListener("click", function(evt) {
+// React to user starting the quiz by pressing start button
+var startingQuiz = function(evt) {
     evt.preventDefault();
+    console.log("pressed");
 
     const startingPage = document.getElementById("starting-page");
     const questionPage = document.getElementById("question-page");
@@ -82,5 +93,90 @@ start_btn.addEventListener("click", function(evt) {
     questionPage.style.display = "block";
 
     //startTimer();
+    start_btn.disabled = true;
+    displayQuestion();
+
+}
+
+// Check if the correct answer is selected
+var checkingAnswer = function(buttonNum) {
+    //evt.preventDefault();
+    console.log(buttonNum);
+    if (Questions[questionNum].correct == buttonNum) {
+        console.log(buttonNum + " is the right answer!");
+    } else {
+        console.log(buttonNum + " is not the right answer!");
+    }
+}
+
+// Check which answer is chosen
+var questionButtonHandler = function(event) {
+    var targetEl = event.target;
+  
+    if (targetEl.matches("#answer1-btn")) {
+        checkingAnswer(1);
+    } 
+    if (targetEl.matches("#answer2-btn")) {
+        checkingAnswer(2);
+    } 
+    if (targetEl.matches("#answer3-btn")) {
+        checkingAnswer(3);
+    } 
+    if (targetEl.matches("#answer4-btn")) {
+        checkingAnswer(4);
+    } 
+};
+
+// Update the display of the question page
+var displayQuestion = function() {
+    answer1_btn.textContent = Questions[questionNum].answer1;
+    answer2_btn.textContent = Questions[questionNum].answer2;
+    answer3_btn.textContent = Questions[questionNum].answer3;
+    answer4_btn.textContent = Questions[questionNum].answer4;
+    questionText.textContent = Questions[questionNum].question;
+    correctText.textContent = correctStatement;
+}
+/*
+answer1_btn.addEventListener("click", function(evt) {
+    evt.preventDefault();
+
+    if (Questions[questionNum].correct == 1) {
+        console.log("1 is the right answer!");
+    } else {
+        console.log("1 is not the right answer!");
+    }
 });
 
+answer2_btn.addEventListener("click", function(evt) {
+    evt.preventDefault();
+
+    if (Questions[questionNum].correct == 2) {
+        console.log("2 is the right answer!");
+    } else {
+        console.log("2 is not the right answer!");
+    }
+});
+
+answer3_btn.addEventListener("click", function(evt) {
+    evt.preventDefault();
+
+    if (Questions[questionNum].correct == 3) {
+        console.log("3 is the right answer!");
+    } else {
+        console.log("3 is not the right answer!");
+    }
+});
+
+answer4_btn.addEventListener("click", function(evt) {
+    evt.preventDefault();
+
+    if (Questions[questionNum].correct == 4) {
+        console.log("4 is the right answer!");
+    } else {
+        console.log("4 is not the right answer!");
+    }
+});
+*/
+
+start_btn.addEventListener("click", startingQuiz);
+questionPage.addEventListener("click", questionButtonHandler);

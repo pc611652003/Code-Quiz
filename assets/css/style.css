@@ -22,6 +22,10 @@ h3 {
     opacity: 0.6;
 }
 
+.cta--single {
+    justify-content: center;
+}
+
 main {
     display: flex;
     justify-content: center;

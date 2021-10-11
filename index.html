@@ -13,17 +13,17 @@
         <div id="starting-page">
             <h1 id="quiz-title">JavaScript Basic Quiz</h1>
             <h2 id="quiz-brief">You will have 75 seconds to answer 10 questions. Every time you answer incorrectly, your time will got deducted. You will game over if your time drop down to 0. Your score will be your time remaining. Good Luck.</h2>
-            <button id="start-btn" class="cta">Start</button>
+            <button id="start-btn" class="cta cta--single">Start</button>
         </div>
 
         <div id="question-page">
             <h3 id="timer">Time: <span id="countdown"></span></h3>
             <h2 id="question"></h2>
             <ol>
-                <li><button id="answer1-btn" class="cta"></button></li>
-                <li><button id="answer2-btn" class="cta"></button></li>
-                <li><button id="answer3-btn" class="cta"></button></li>
-                <li><button id="answer4-btn" class="cta"></button></li>
+                <li><button id="answer1-btn" class="cta cta--choice"></button></li>
+                <li><button id="answer2-btn" class="cta cta--choice"></button></li>
+                <li><button id="answer3-btn" class="cta cta--choice"></button></li>
+                <li><button id="answer4-btn" class="cta cta--choice"></button></li>
             </ol>
             <h3 id="answerResult"></h3>
         </div>
@@ -33,11 +33,11 @@
             <div id="HS-input">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" placeholder="Challenger" />
-                <button id="HS-submit" class="cta">Submit</button>
+                <button id="HS-submit" class="cta cta--submit">Submit</button>
             </div>
             <div id="HS-list"></div>
-            <button id="back-btn" class="cta">Back to the Start</button>
-            <button id="clear-btn" class="cta">Clear Highscores</button>
+            <button id="back-btn" class="cta cta--pair">Back to the Start</button>
+            <button id="clear-btn" class="cta cta--pair">Clear Highscores</button>
         </div>
     </main>
 
