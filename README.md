@@ -46,3 +46,26 @@ You are required to submit the following for review:
 URL of the deployed application : https://pc611652003.github.io/Code-Quiz/
 
 URL of the GitHub repository : https://github.com/pc611652003/Code-Quiz
+
+The Application will start at this page.
+![Starting Page](screenshots/Starting_Page.PNG "Starting page of the application")
+
+The Application will display question once user click "Start".
+![Question Page](screenshots/Question_Page.PNG "Question page of the application")
+
+The Application will display next question and message "CORRECT" if user click on the correct answer.
+![Question Page Correct](screenshots/Question_Page_Correct.PNG "Next question page with 'CORRECT' message")
+
+The Application will display next question and message "WRONG" if user click on any incorrect answers. The Remaining time is deducted too.
+![Question Page Wrong](screenshots/Question_Page_Wrong.PNG "Next question page with 'WRONG' message")
+
+The Application will display the Highscore Page once time runs out or all questions are answered.
+![Highscore Page](screenshots/Highscore_Page.PNG "Highscore page of the application")
+
+User can type in name and submit the score to the highscore list. The list will update right away.
+![Highscore Page Submit](screenshots/Highscore_Page_Submit.PNG "Highscore page after new submit")
+
+All highscore records will be erased once user click clear highscores.
+![Highscore Page Clear](screenshots/Highscore_Page_Clear.PNG "Highscore page after clear highscores")
+
+If user click back to the start, user will go back to starting page and can try again.
