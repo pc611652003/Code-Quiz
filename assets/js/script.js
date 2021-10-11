@@ -194,6 +194,7 @@ var submitUserInfo = function() {
         };
         console.log(username);
         updateHighscoreList(newScore);
+        document.querySelector("input[name='name']").value = "";
     }
 }
 
